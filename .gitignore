@@ -4,3 +4,4 @@ dist/
 build/
 *.local
 .DS_Store
+ROADMAP.md
