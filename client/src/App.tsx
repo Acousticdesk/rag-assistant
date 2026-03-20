@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ApiKeySetup } from './components/ApiKeySetup';
 import { ChatWindow } from './components/ChatWindow';
 import { DocumentUpload } from './components/DocumentUpload';
@@ -7,7 +6,6 @@ import './App.css';
 
 function App() {
   const { session, saveSession, clearSession } = useSession();
-  const [view, setView] = useState<'chat' | 'upload'>('chat');
 
   if (!session) {
     return <ApiKeySetup onSave={saveSession} />;
@@ -15,32 +13,29 @@ function App() {
 
   return (
     <div className="app">
-      <header className="app-header">
-        <h1>RAG Assistant</h1>
-        <nav>
-          <button
-            className={view === 'chat' ? 'active' : ''}
-            onClick={() => setView('chat')}
-          >
-            Chat
-          </button>
-          <button
-            className={view === 'upload' ? 'active' : ''}
-            onClick={() => setView('upload')}
-          >
-            Upload
-          </button>
-          <button className="logout" onClick={clearSession}>
+      <aside className="sidebar">
+        <div className="sidebar-header">
+          <div className="sidebar-logo">
+            <div className="sidebar-logo-icon">✦</div>
+            <span className="sidebar-logo-text">RAG Assistant</span>
+          </div>
+          <span className="provider-badge">{session.provider}</span>
+        </div>
+
+        <div className="sidebar-content">
+          <p className="sidebar-section-title">Context Documents</p>
+          <DocumentUpload session={session} />
+        </div>
+
+        <div className="sidebar-footer">
+          <button className="btn-signout" onClick={clearSession}>
             Sign out
           </button>
-        </nav>
-      </header>
-      <main>
-        {view === 'chat' ? (
-          <ChatWindow session={session} />
-        ) : (
-          <DocumentUpload session={session} />
-        )}
+        </div>
+      </aside>
+
+      <main className="app-main">
+        <ChatWindow session={session} />
       </main>
     </div>
   );

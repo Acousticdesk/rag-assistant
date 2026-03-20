@@ -18,7 +18,7 @@ export function DocumentUpload({ session }: Props) {
     setError('');
     try {
       const result = await uploadFile(file, session);
-      setStatus(`Uploaded: ${result.filename} (${(result.size / 1024).toFixed(1)} KB)`);
+      setStatus(`${result.filename} · ${(result.size / 1024).toFixed(1)} KB`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Upload failed');
     }
@@ -37,9 +37,9 @@ export function DocumentUpload({ session }: Props) {
   }
 
   return (
-    <div className="upload-container">
+    <div>
       <div
-        className={`drop-zone ${dragging ? 'dragging' : ''}`}
+        className={`upload-zone ${dragging ? 'dragging' : ''}`}
         onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
         onDragLeave={() => setDragging(false)}
         onDrop={handleDrop}
@@ -52,16 +52,16 @@ export function DocumentUpload({ session }: Props) {
           style={{ display: 'none' }}
           onChange={handleChange}
         />
-        <p className="drop-icon">📄</p>
-        <p>Drag & drop a file here, or click to select</p>
-        <p className="drop-hint">Supported: PDF, TXT, MD, DOCX</p>
+        <span className="upload-zone-icon">⬆</span>
+        <p className="upload-zone-label">Drop a file or click to upload</p>
+        <p className="upload-zone-hint">PDF · TXT · MD · DOCX</p>
       </div>
 
-      {status && <p className="upload-status">{status}</p>}
+      {status && <p className="upload-status">✓ {status}</p>}
       {error && <p className="upload-error">{error}</p>}
 
       <p className="upload-note">
-        Document ingestion (chunking + embedding) will be wired in the next phase.
+        Embedding pipeline coming soon — files are received but not yet indexed.
       </p>
     </div>
   );

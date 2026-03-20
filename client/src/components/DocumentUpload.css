@@ -1,52 +1,68 @@
-.upload-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 3rem 1.5rem;
-  gap: 1.5rem;
-}
-
-.drop-zone {
-  width: 100%;
-  max-width: 500px;
-  border: 2px dashed #d0d0d0;
-  border-radius: 12px;
-  padding: 3rem 2rem;
+.upload-zone {
+  border: 1.5px dashed var(--border-hi);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1rem;
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
-  background: #fff;
+  transition: border-color 0.2s, background 0.2s;
+  user-select: none;
 }
 
-.drop-zone:hover,
-.drop-zone.dragging {
-  border-color: #1a1a1a;
-  background: #fafafa;
+.upload-zone:hover,
+.upload-zone.dragging {
+  border-color: var(--accent);
+  background: var(--accent-glow);
 }
 
-.drop-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.75rem;
+.upload-zone-icon {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-3);
 }
 
-.drop-hint {
-  font-size: 0.8rem;
-  color: #999;
-  margin-top: 0.4rem;
+.upload-zone-label {
+  font-size: 0.78rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.upload-zone-hint {
+  font-size: 0.68rem;
+  color: var(--text-3);
+  margin-top: 0.3rem;
 }
 
 .upload-status {
-  color: #16a34a;
-  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.18);
+  border-radius: var(--radius-sm);
+  font-size: 0.73rem;
+  color: var(--success);
+  line-height: 1.45;
+  word-break: break-all;
 }
 
 .upload-error {
-  color: #dc2626;
-  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(248, 113, 113, 0.07);
+  border: 1px solid rgba(248, 113, 113, 0.18);
+  border-radius: var(--radius-sm);
+  font-size: 0.73rem;
+  color: var(--error);
+  line-height: 1.45;
 }
 
 .upload-note {
-  font-size: 0.8rem;
-  color: #999;
+  font-size: 0.68rem;
+  color: var(--text-3);
+  margin-top: 0.8rem;
   font-style: italic;
+  line-height: 1.55;
 }

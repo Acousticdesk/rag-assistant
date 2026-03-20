@@ -7,6 +7,12 @@
     "install:all": "npm install --prefix server && npm install --prefix client"
   },
   "devDependencies": {
+    "@types/passport": "1.0.17",
+    "@types/passport-http-bearer": "1.0.42",
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "passport": "0.7.0",
+    "passport-http-bearer": "1.0.1"
   }
 }
