@@ -9,7 +9,7 @@ interface Props {
 const PROVIDERS = [
   { id: 'openai', label: 'OpenAI', available: true },
   { id: 'anthropic', label: 'Anthropic', available: false },
-  { id: 'gemini', label: 'Google Gemini', available: false },
+  { id: 'gemini', label: 'Gemini', available: false },
 ];
 
 export function ApiKeySetup({ onSave }: Props) {
@@ -28,11 +28,13 @@ export function ApiKeySetup({ onSave }: Props) {
 
   return (
     <div className="setup-overlay">
+      <div className="setup-glow-bottom" />
       <div className="setup-card">
-        <h2>Welcome to RAG Assistant</h2>
+        <div className="setup-icon">✦</div>
+        <h2>RAG Assistant</h2>
         <p className="setup-subtitle">
-          Enter your API key to get started. It is stored only in your browser
-          session and never sent to our servers.
+          Enter your API key to get started. It lives only in your browser
+          session and is never sent to our servers.
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -48,9 +50,7 @@ export function ApiKeySetup({ onSave }: Props) {
                   onClick={() => p.available && setProvider(p.id)}
                 >
                   {p.label}
-                  {!p.available && (
-                    <span className="coming-soon">Coming soon</span>
-                  )}
+                  {!p.available && <span className="coming-soon">Soon</span>}
                 </button>
               ))}
             </div>
@@ -73,7 +73,7 @@ export function ApiKeySetup({ onSave }: Props) {
           {error && <p className="setup-error">{error}</p>}
 
           <button type="submit" className="setup-submit">
-            Start chatting
+            Start chatting →
           </button>
         </form>
       </div>

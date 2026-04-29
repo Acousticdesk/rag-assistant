@@ -3,23 +3,55 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/index.js",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "script:inspect-schema": "tsx scripts/inspect-schema.ts",
+    "script:list-documents": "tsx scripts/list-documents.ts",
+    "script:browse-chunks": "tsx scripts/browse-chunks.ts"
   },
   "dependencies": {
+    "better-sqlite3": "12.8.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "multer": "^1.4.5-lts.1",
-    "openai": "^4.52.7"
+    "openai": "^4.52.7",
+    "passport": "0.7.0",
+    "passport-http-bearer": "1.0.1",
+    "pdf-parse": "2.4.5",
+    "tiktoken": "1.0.22",
+    "uuid": "13.0.0",
+    "weaviate-client": "3.12.1",
+    "winston": "3.19.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "7.6.13",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/multer": "^1.4.11",
     "@types/node": "^20.14.10",
-    "ts-node-dev": "^2.0.0",
+    "@types/passport": "1.0.17",
+    "@types/passport-http-bearer": "1.0.42",
+    "@types/pdf-parse": "1.1.5",
+    "@types/uuid": "10.0.0",
+    "@typescript-eslint/eslint-plugin": "8.58.0",
+    "@typescript-eslint/parser": "8.58.0",
+    "chalk": "4.1.2",
+    "eslint": "8.57.1",
+    "eslint-config-prettier": "9.1.2",
+    "eslint-plugin-prettier": "5.5.5",
+    "prettier": "3.8.1",
+    "tsx": "4.21.0",
     "typescript": "^5.5.3"
+  },
+  "volta": {
+    "node": "24.14.1",
+    "npm": "11.12.1"
   }
 }
